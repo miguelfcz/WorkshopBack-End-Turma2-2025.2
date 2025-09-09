@@ -21,7 +21,7 @@ def buscar_cep(request):
                 data = response.json()
 
                 if data.get("erro"):
-                    return HttpResponse("CEP inválido")
+                    return render(request, 'endereco.html', {'erro': data.get("erro")})
                 else:
                     endereco = Endereco(
                         rua = data.get('logradouro', ''),
