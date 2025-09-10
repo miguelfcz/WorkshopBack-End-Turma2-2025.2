@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}Detalhes do Endereço{% endblock %}
+
+{% block content %}
+<h2>Detalhes do Endereço</h2>
+
+<div class="card mt-3">
+    <div class="card-body">
+        <p><strong>Rua:</strong> {{ endereco.rua }}</p>
+        <p><strong>Bairro:</strong> {{ endereco.bairro }}</p>
+        <p><strong>Cidade:</strong> {{ endereco.cidade }}</p>
+        <p><strong>Estado:</strong> {{ endereco.estado }}</p>
+        <p><strong>CEP:</strong> {{ endereco.cep }}</p>
+
+        <a href="{% url 'listar' %}" class="btn btn-secondary mt-2">Lista</a>
+    </div>
+</div>
+{% endblock %}

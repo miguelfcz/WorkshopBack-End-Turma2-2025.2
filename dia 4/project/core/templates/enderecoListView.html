@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Lista de Endereços{% endblock %}
+
+{% block content %}
+<h2>Endereços Cadastrados</h2>
+
+{% if enderecos %}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Rua</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for endereco in enderecos %}
+        <tr>
+            <td>{{ endereco.rua }}</td>
+            <td>
+                <a href="{% url 'detalhe' endereco.pk %}" class="btn btn-info btn-sm">Detalhes</a>
+                <a href="{% url 'delete' endereco.pk %}" class="btn btn-danger btn-sm">Deletar</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>Nenhum endereço cadastrado.</p>
+{% endif %}
+
+{% endblock %}

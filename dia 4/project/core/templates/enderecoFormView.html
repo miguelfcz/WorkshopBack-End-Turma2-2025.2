@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}Buscar CEP{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Buscar CEP</h2>
+
+    <!-- Formulário -->
+    <form method="post" action="{% url 'buscarcep' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Buscar</button>
+    </form>
+    <!-- Rua buscada e botão para detalhes -->
+    {% if endereco %}
+    <div class="mt-4">
+        <h3>Endereço buscado:</h3>
+        <p><strong>Rua:</strong> {{ endereco.rua }}</p>
+        <a href="{% url 'detalhe' endereco.pk %}" class="btn btn-primary mt-2">Detalhes</a>
+    </div>
+    {% endif %}
+
+</div>
+{% endblock %}
